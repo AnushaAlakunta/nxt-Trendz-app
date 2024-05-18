@@ -8,21 +8,24 @@ import './index.css'
 const CartItem = props => (
   <CartContext.Consumer>
     {value => {
-      const {removeCartItem,incrementCartItemQuantity,decrementCartItemQuantity} = value
+      const {
+        removeCartItem,
+        incrementCartItemQuantity,
+        decrementCartItemQuantity,
+      } = value
       const {cartItemDetails} = props
       const {id, title, brand, quantity, price, imageUrl} = cartItemDetails
-      const onClickDecrement=()=>{
+      const onClickDecrement = () => {
         decrementCartItemQuantity(id)
       }
-      const onClickIncrement=()=>{
+      const onClickIncrement = () => {
         incrementCartItemQuantity(id)
       }
 
       const onRemoveCartItem = () => {
         removeCartItem(id)
       }
-      const totalPrice=price*quantity
-      // TODO: Update the functionality to increment and decrement quantity of the cart item
+      
 
       return (
         <li className="cart-item">
@@ -33,11 +36,21 @@ const CartItem = props => (
               <p className="cart-product-brand">by {brand}</p>
             </div>
             <div className="cart-quantity-container">
-              <button type="button" className="quantity-controller-button" data-testid="minus" onClick={onClickDecrement}>
+              <button
+                type="button"
+                className="quantity-controller-button"
+                data-testid="minus"
+                onClick={onClickDecrement}
+              >
                 <BsDashSquare color="#52606D" size={12} />
               </button>
               <p className="cart-quantity">{quantity}</p>
-              <button type="button" className="quantity-controller-button" data-testid="plus" onClick={onClickIncrement}>
+              <button
+                type="button"
+                className="quantity-controller-button"
+                data-testid="plus"
+                onClick={onClickIncrement}
+              >
                 <BsPlusSquare color="#52606D" size={12} />
               </button>
             </div>
